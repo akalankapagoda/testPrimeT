@@ -3,7 +3,7 @@
   transports="https http" xmlns="http://ws.apache.org/ns/synapse">
   <target>
     <endpoint name="endpoint_urn_uuid_08d35538-fda0-427c-82dc-ef9f7f95e107">
-      <address trace="disable" uri="http://10.100.5.147:9000/services/SimpleStockQuoteService"/>
+      <address trace="disable" uri="http://localhost:9000/services/SimpleStockQuoteService"/>
     </endpoint>
     <inSequence/>
     <outSequence>
