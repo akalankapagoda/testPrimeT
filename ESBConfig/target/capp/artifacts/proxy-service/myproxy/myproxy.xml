@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy name="myproxy" startOnLoad="true" trace="disable"
+  transports="http https" xmlns="http://ws.apache.org/ns/synapse">
+  <target>
+    <inSequence>
+      <property description="myproperty" name="myProperty"
+        scope="default" type="STRING" value="value"/>
+      <log description="myLog" level="custom">
+        <property name="myProperty2" value="get-property('myProperty')"/>
+      </log>
+      <testPCML.sample_template/>
+      <log/>
+    </inSequence>
+    <outSequence/>
+    <faultSequence/>
+  </target>
+</proxy>
