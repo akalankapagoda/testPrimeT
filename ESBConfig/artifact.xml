@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="akaTest" groupId="com.example.ESBConfig.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/akaTest.xml</file>
+    </artifact>
+    <artifact name="PharmacyClaimSearch" groupId="com.example.ESBConfig.proxy-service" version="1.0.0" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/proxy-services/PharmacyClaimSearch.xml</file>
+    </artifact>
     <artifact name="PassThrough" groupId="com.example.ESBConfig.proxy-service" version="1.0.0" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/proxy-services/PassThrough.xml</file>
+    </artifact>
+    <artifact name="Test" groupId="com.example.ESBConfig.proxy-service" version="1.0.0" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/proxy-services/Test.xml</file>
+    </artifact>
+    <artifact name="PharmacyClaimSearchError" groupId="com.example.ESBConfig.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/PharmacyClaimSearchError.xml</file>
+    </artifact>
+    <artifact name="EP1" groupId="com.example.ESBConfig.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/EP1.xml</file>
     </artifact>
 </artifacts>

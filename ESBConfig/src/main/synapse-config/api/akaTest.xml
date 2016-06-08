@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/aka" name="akaTest" xmlns="http://ws.apache.org/ns/synapse">
+  <resource methods="POST" protocol="http" url-mapping="/akaTest">
+    <inSequence>
+      <log description="Receive logger" level="full">
+        <property name="received" value="success"/>
+      </log>
+      <send>
+        <endpoint>
+          <address format="soap11" trace="disable" uri="http://localhost:9000/services/SimpleStockQuoteService"/>
+        </endpoint>
+      </send>
+    </inSequence>
+    <outSequence>
+      <send/>
+    </outSequence>
+    <faultSequence/>
+  </resource>
+</api>

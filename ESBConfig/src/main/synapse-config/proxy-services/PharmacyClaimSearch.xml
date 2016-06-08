@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy name="PharmacyClaimSearch" startOnLoad="true" trace="disable"
+  transports="http https" xmlns="http://ws.apache.org/ns/synapse">
+  <target>
+    <inSequence>
+      <validate>
+        <schema key="gov:xsd/PharmacyClaimSearch.xsd"/>
+        <on-fail>
+          <sequence key="PharmacyClaimSearchError"/>
+        </on-fail>
+      </validate>
+      <property description="fromDateValue"
+        expression="translate($body/PharmacyClaimSearch/FromDate, '-', '')"
+        name="fromDate" scope="default" type="STRING"/>
+      <property description="thruDateValue"
+        expression="translate($body/PharmacyClaimSearch/ThruDate, '-', '')"
+        name="thruDate" scope="default" type="STRING"/>
+      <filter xpath="number(get-property('fromDate')) &lt; number(get-property('thruDate'))">
+        <then>
+          <log description="Log Success">
+            <property name="passed" value="passed"/>
+          </log>
+          <send description="Send to PharmacyClaimSearch prime endpoint">
+            <endpoint key="gov:endpoints/PharmacyClaimSearchEndpoint.xml"/>
+          </send>
+        </then>
+        <else>
+          <property description="Set Error Message" name="ERROR_MESSAGE"
+            scope="default" type="STRING" value="ThruDate value should be greater than FromDate value."/>
+          <log description="failed">
+            <property name="dataFail" value="Thru date should be greater than from date"/>
+          </log>
+        </else>
+      </filter>
+    </inSequence>
+    <outSequence/>
+    <faultSequence/>
+  </target>
+</proxy>
